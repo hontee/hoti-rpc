@@ -1,2 +1,3 @@
-# kuaiba-rpc
-Kuaiba-release.
+# HOTI-rpc
+
+HOTI-release.
