@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hoti.site.db.dao.CategoryMapper">
-
   <resultMap id="BaseResultMap" type="com.hoti.site.db.entity.Category">
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="name" property="name" jdbcType="VARCHAR" />
@@ -10,6 +9,7 @@
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
     <result column="cover" property="cover" jdbcType="VARCHAR" />
     <result column="parent" property="parent" jdbcType="BIGINT" />
+    <result column="category" property="category" jdbcType="BIGINT" />
     <result column="product" property="product" jdbcType="BIGINT" />
     <result column="topic" property="topic" jdbcType="BIGINT" />
     <result column="weight" property="weight" jdbcType="BIGINT" />
@@ -18,7 +18,6 @@
     <result column="last_modified" property="lastModified" jdbcType="TIMESTAMP" />
     <result column="creator" property="creator" jdbcType="VARCHAR" />
   </resultMap>
-  
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -48,7 +47,6 @@
       </foreach>
     </where>
   </sql>
-  
   <sql id="Update_By_Example_Where_Clause">
     <where>
       <foreach collection="example.oredCriteria" item="criteria" separator="or">
@@ -78,12 +76,10 @@
       </foreach>
     </where>
   </sql>
-  
   <sql id="Base_Column_List">
-    id, name, title, description, avatar, cover, parent, product, topic, weight, state, 
-    created, last_modified, creator
+    id, name, title, description, avatar, cover, parent, category, product, topic, weight, 
+    state, created, last_modified, creator
   </sql>
-  
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hoti.site.db.entity.CategoryExample">
     select
     <if test="distinct">
@@ -138,6 +134,9 @@
       <if test="parent != null">
         parent,
       </if>
+      <if test="category != null">
+        category,
+      </if>
       <if test="product != null">
         product,
       </if>
@@ -181,6 +180,9 @@
       </if>
       <if test="parent != null">
         #{parent,jdbcType=BIGINT},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=BIGINT},
       </if>
       <if test="product != null">
         #{product,jdbcType=BIGINT},
@@ -235,6 +237,9 @@
       <if test="record.parent != null">
         parent = #{record.parent,jdbcType=BIGINT},
       </if>
+      <if test="record.category != null">
+        category = #{record.category,jdbcType=BIGINT},
+      </if>
       <if test="record.product != null">
         product = #{record.product,jdbcType=BIGINT},
       </if>
@@ -281,6 +286,9 @@
       </if>
       <if test="parent != null">
         parent = #{parent,jdbcType=BIGINT},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=BIGINT},
       </if>
       <if test="product != null">
         product = #{product,jdbcType=BIGINT},
